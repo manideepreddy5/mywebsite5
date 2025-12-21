@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Linkedin, Github, Twitter } from 'lucide-react';
-import profilePhoto from '@/assets/profile-photo.jpg';
+import profilePhoto from '@/assets/profile-photo.jpg'; // transparent PNG
 import heroBg from '@/assets/hero-bg.jpg';
 
 const socialLinks = [
@@ -15,19 +15,19 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative overflow-hidden pt-20"
+      className="min-h-screen flex items-center relative overflow-hidden pt-24"
     >
-      {/* Data visuals background */}
+      {/* DATA VISUAL BACKGROUND */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* Light overlay for readability */}
+      {/* READABILITY OVERLAY */}
       <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/75 to-background/45" />
 
       <div className="section-container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* LEFT CONTENT */}
           <div
@@ -36,24 +36,23 @@ export const HeroSection = () => {
           >
             <p className="text-muted-foreground text-lg">Hello, I'm</p>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight">
               <span className="text-primary">Manideep</span>
               <br />
               <span className="text-foreground">Reddy</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-foreground/80 font-medium">
-              Entry-Level Data Analyst | B.Tech CSE (IoT)
+              Data Analyst | Python • SQL • Power BI
             </p>
 
             <p className="text-muted-foreground max-w-lg leading-relaxed">
-              Motivated Computer Science Engineering graduate with core skills in
-              Python, SQL, EDA, and Data Visualization. Seeking to leverage
-              technical expertise and contribute to data-driven business
-              decisions.
+              Computer Science graduate with strong foundations in Python, SQL,
+              exploratory data analysis, and data visualization. Focused on
+              turning raw data into meaningful insights.
             </p>
 
-            {/* Buttons */}
+            {/* BUTTONS */}
             <div className="flex flex-wrap gap-4 pt-4">
               <Button variant="hero" size="lg">
                 <Download className="w-5 h-5" />
@@ -68,7 +67,7 @@ export const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Social links */}
+            {/* SOCIAL + TECH */}
             <div className="flex items-center gap-4 pt-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
@@ -98,16 +97,19 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* RIGHT IMAGE – TRANSPARENT */}
+          {/* RIGHT IMAGE – POSITION FIXED */}
           <div
             className="flex justify-center lg:justify-end animate-slide-in-right"
             style={{ animationDelay: '0.4s' }}
           >
-            <img
-              src={profilePhoto}
-              alt="Manideep Reddy - Data Analyst"
-              className="w-72 md:w-96 h-auto object-contain"
-            />
+            <div className="w-[300px] md:w-[360px] lg:w-[400px]">
+              <img
+                src={profilePhoto}
+                alt="Manideep Reddy - Data Analyst"
+                className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
+              />
+
+            </div>
           </div>
 
         </div>
