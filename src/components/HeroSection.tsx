@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Linkedin, Github, Twitter } from 'lucide-react';
-import profilePhoto from '@/assets/profile-photo.png'; // MUST be transparent PNG
+import profilePhoto from '@/assets/profile-photo.jpg';
 import heroBg from '@/assets/hero-bg.jpg';
 
 const socialLinks = [
@@ -17,14 +17,14 @@ export const HeroSection = () => {
       id="home"
       className="min-h-screen flex items-center relative overflow-hidden pt-20"
     >
-      {/* DATA VISUAL BACKGROUND */}
+      {/* Data visuals background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* READABILITY OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/75 to-background/40" />
+      {/* Light overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/75 to-background/45" />
 
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -47,12 +47,13 @@ export const HeroSection = () => {
             </p>
 
             <p className="text-muted-foreground max-w-lg leading-relaxed">
-              Motivated Computer Science Engineering graduate with strong skills in
-              Python, SQL, EDA, and Data Visualization. Seeking to contribute to
-              data-driven business decisions.
+              Motivated Computer Science Engineering graduate with core skills in
+              Python, SQL, EDA, and Data Visualization. Seeking to leverage
+              technical expertise and contribute to data-driven business
+              decisions.
             </p>
 
-            {/* BUTTONS */}
+            {/* Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
               <Button variant="hero" size="lg">
                 <Download className="w-5 h-5" />
@@ -67,7 +68,7 @@ export const HeroSection = () => {
               </Button>
             </div>
 
-            {/* SOCIAL + TECH */}
+            {/* Social links */}
             <div className="flex items-center gap-4 pt-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
@@ -97,7 +98,7 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* RIGHT IMAGE – TRANSPARENT, NO CONTAINER */}
+          {/* RIGHT IMAGE – TRANSPARENT */}
           <div
             className="flex justify-center lg:justify-end animate-slide-in-right"
             style={{ animationDelay: '0.4s' }}
