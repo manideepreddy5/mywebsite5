@@ -17,17 +17,19 @@ export const HeroSection = () => {
       id="home"
       className="min-h-screen flex items-center relative overflow-hidden pt-20"
     >
-      {/* Background with data visualizations */}
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
+
+      {/* Soft overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/75 to-background/50" />
 
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Content */}
+
+          {/* LEFT CONTENT */}
           <div
             className="space-y-6 animate-slide-in-left"
             style={{ animationDelay: '0.2s' }}
@@ -66,7 +68,7 @@ export const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Social Links */}
+            {/* Social links */}
             <div className="flex items-center gap-4 pt-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
@@ -74,8 +76,8 @@ export const HeroSection = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   aria-label={label}
+                  className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 >
                   <Icon size={20} />
                 </a>
@@ -96,26 +98,26 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Profile Image */}
+          {/* RIGHT IMAGE */}
           <div
             className="flex justify-center lg:justify-end animate-slide-in-right"
             style={{ animationDelay: '0.4s' }}
           >
             <div className="relative">
-              
-              {/* Soft glow behind image */}
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-110 animate-float" />
 
-              {/* Image container */}
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-card-hover bg-gradient-to-br from-background/80 via-background/60 to-primary/10">
+              {/* Subtle glow */}
+              <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-110 animate-float" />
+
+              {/* Photo container */}
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-card-hover bg-background">
                 <img
                   src={profilePhoto}
                   alt="Manideep Reddy - Data Analyst"
-                  className="w-full h-full object-contain bg-transparent"
+                  className="w-full h-full object-contain"
                 />
               </div>
 
-              {/* Decorative elements */}
+              {/* Decorative dots */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl" />
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full blur-lg" />
             </div>
