@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -32,8 +31,14 @@ export const Navbar = () => {
       }`}
     >
       <div className="section-container flex items-center justify-between">
-        <a href="#home" className="text-xl font-bold font-display text-foreground">
-          <span className="text-primary">M</span>anideep <span className="text-primary">R</span>eddy
+
+        {/* LOGO */}
+        <a
+          href="#home"
+          className="flex items-center justify-center w-11 h-11 rounded-full bg-primary text-primary-foreground font-bold text-lg tracking-wide hover:scale-105 transition-transform"
+          aria-label="GMR Home"
+        >
+          GMR
         </a>
 
         {/* Desktop Navigation */}
@@ -47,16 +52,13 @@ export const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <Button variant="hero" size="lg">
-            <Download className="w-4 h-4" />
-            Download Resume
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -76,10 +78,6 @@ export const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="hero" size="lg" className="mt-2">
-              <Download className="w-4 h-4" />
-              Download Resume
-            </Button>
           </div>
         </div>
       )}
