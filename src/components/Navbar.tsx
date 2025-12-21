@@ -34,11 +34,15 @@ export const Navbar = () => {
 
         {/* LOGO */}
         <a
-          href="#home"
-          className="flex items-center justify-center w-11 h-11 rounded-full bg-primary text-primary-foreground font-bold text-lg tracking-wide hover:scale-105 transition-transform"
-          aria-label="GMR Home"
+        href="#home"
+        aria-label="GMR Home"
+        className="flex items-center justify-center w-11 h-11 rounded-full
+             bg-gradient-to-br from-primary to-primary/80
+             text-primary-foreground font-semibold text-sm tracking-wider
+             shadow-md ring-1 ring-primary/30
+             hover:scale-105 transition-transform"
         >
-          GMR
+         GMR
         </a>
 
         {/* Desktop Navigation */}
