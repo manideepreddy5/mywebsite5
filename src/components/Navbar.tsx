@@ -30,8 +30,12 @@ export const Navbar = () => {
           : 'bg-transparent py-5'
         }`}
     >
-      {/* ✅ SAME CONTAINER AS HERO */}
-      <div className="section-container flex items-center justify-between relative">
+      {/* FIX: Replaced 'section-container' with standard full-width alignment classes.
+         'w-full': Ensures it takes available space.
+         'max-w-7xl mx-auto': Matches the Hero section limit.
+         'px-6': Matches the Hero section padding.
+      */}
+      <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between relative">
 
         {/* LOGO (LEFT) */}
         <a
@@ -103,7 +107,8 @@ export const Navbar = () => {
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur border-t border-border">
-          <div className="section-container py-4 flex flex-col gap-4">
+          {/* FIX: Updated container here as well to match header width */}
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-col gap-4">
             {navItems.map((item) => (
               <a
                 key={item.href}

@@ -9,68 +9,55 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden pt-24"
+      // bg-cover ensures the background extends to cover the photo on mobile
+      className="relative pt-28 pb-28 bg-no-repeat bg-cover lg:bg-[length:1300px_auto]"
+      style={{
+        backgroundImage: `url(${heroBg})`,
+        backgroundPosition: 'center -65px',
+      }}
     >
-      {/* BACKGROUND IMAGE */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+      {/* SOFT OVERLAY */}
+      <div className="absolute inset-0 bg-background/60" />
 
-      {/* LIGHT READABILITY OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/30 to-background/15" />
-
-      <div className="relative z-10 w-full">
-        <div
-          className="
-            section-container
-            grid
-            grid-cols-1
-            lg:grid-cols-2
-            gap-12
-            items-center
-          "
-        >
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* LEFT CONTENT */}
-          <div className="space-y-5 text-center lg:text-left">
-
+          {/* 'text-center' for mobile, 'lg:text-left' for laptop */}
+          <div className="space-y-6 text-center lg:text-left">
             <p className="text-sm uppercase tracking-wide text-muted-foreground">
               Hello, I’m
             </p>
 
             <h1 className="font-display font-bold leading-tight">
-              <span className="block text-4xl sm:text-5xl lg:text-[64px] text-primary">
+              <span className="block text-4xl sm:text-5xl lg:text-[70px] text-primary">
                 Manideep
               </span>
-              <span className="block text-4xl sm:text-5xl lg:text-[64px] text-foreground">
+              <span className="block text-4xl sm:text-5xl lg:text-[70px] text-foreground">
                 Reddy
               </span>
             </h1>
 
-            {/* TAGLINE – ONE LINE ON DESKTOP, WRAPS ON MOBILE */}
-            <p
-              className="
-                text-base sm:text-lg md:text-xl
-                font-medium text-foreground/80
-                max-w-xl mx-auto lg:mx-0
-                lg:whitespace-nowrap
-              "
-            >
+            {/* Added 'mx-auto' to center paragraphs on mobile */}
+            <p className="
+              text-base sm:text-lg md:text-xl
+              font-medium text-foreground/80
+              max-w-xl mx-auto lg:mx-0
+              lg:whitespace-nowrap
+            ">
               <span className="text-primary font-semibold">Data Analyst</span>
               <span className="mx-2 text-muted-foreground">—</span>
               Transforming data into clear, actionable insights
             </p>
 
-            {/* DESCRIPTION */}
             <p className="max-w-xl mx-auto lg:mx-0 text-muted-foreground text-base leading-relaxed">
               Computer Science graduate with strong foundations in Python, SQL,
               and data analysis. Passionate about extracting insights from raw
               data through structured analysis and effective visualization.
             </p>
 
-            {/* SKILLS */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-2">
+            {/* 'justify-center' aligns buttons to middle on mobile */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 pt-3">
               {techStack.map((tech) => (
                 <span
                   key={tech}
@@ -81,7 +68,6 @@ export const HeroSection = () => {
               ))}
             </div>
 
-            {/* CTA BUTTONS */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
               <Button variant="hero" size="lg" asChild>
                 <a
@@ -103,17 +89,14 @@ export const HeroSection = () => {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="flex justify-center lg:justify-end">
-            <div
-              className="
-                relative
-                w-[220px]
-                sm:w-[260px]
-                md:w-[300px]
-                lg:w-[310px]
-                xl:w-[370px]
-              "
-            >
+          {/* Added 'mt-10' to give space between buttons and photo on mobile. */}
+          <div className="flex justify-center lg:justify-end mt-10 lg:mt-0">
+            <div className="
+              relative
+              w-[280px]      
+              sm:w-[320px]
+              xl:w-[360px]
+            ">
               <img
                 src={profilePhoto}
                 alt="Manideep Reddy"
@@ -121,10 +104,11 @@ export const HeroSection = () => {
                   w-full h-auto object-contain
                   drop-shadow-[0_18px_36px_rgba(0,0,0,0.18)]
                   contrast-[1.02] saturate-[1.05]
-
-                  /* Fade ONLY on desktop */
-                  lg:[mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]
-                  lg:[-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]
+                  
+                  /* FADING EFFECT RESTORED */
+                  /* No 'lg:' prefix, so it applies on all screens */
+                  [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]
+                  [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]
                 "
               />
             </div>
