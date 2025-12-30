@@ -1,13 +1,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -19,42 +12,70 @@ export const ThemeToggle = () => {
 
   if (!mounted) return null;
 
-  return (
-    <TooltipProvider>
-      <Tooltip delayDuration={100}>
-        <TooltipTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className="
-              relative rounded-full w-11 h-11 
-              border-2 border-primary/30 bg-background/80 backdrop-blur-md
-              hover:border-primary hover:bg-primary/10 hover:scale-110
-              hover:shadow-[0_0_20px_rgba(14,165,233,0.5)]
-              transition-all duration-500 group overflow-hidden
-            "
-            aria-label="Toggle theme"
-          >
-            {/* Pulsing Attraction Effect */}
-            <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-20 group-hover:hidden" />
+  const isDark = theme === "dark";
 
-            {/* Sun Icon (Now in Primary Blue) */}
-            <Sun className="h-[1.4rem] w-[1.4rem] text-primary transition-all duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 group-hover:rotate-45" />
-            
-            {/* Moon Icon (Primary Blue) */}
-            <Moon className="absolute h-[1.4rem] w-[1.4rem] text-primary transition-all duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100 group-hover:-rotate-12" />
-            
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent 
-          side="bottom" 
-          className="bg-primary text-white font-semibold animate-in fade-in zoom-in duration-200"
-        >
-          <p>{theme === 'dark' ? 'Enable Light Mode' : 'Enable Dark Mode'}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
+
+  return (
+    <div className="flex items-center">
+      <button
+        onClick={toggleTheme}
+        className="
+          relative flex items-center p-1 rounded-full 
+          bg-muted/50 dark:bg-muted/20 border-2 border-primary/30
+          w-[110px] h-10 transition-all duration-300 hover:border-primary
+        "
+        aria-label="Toggle theme"
+      >
+        {/* Sliding Blue Accent */}
+        <div 
+          className={`
+            absolute h-8 w-[50px] rounded-full bg-primary shadow-md
+            transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+            ${isDark ? 'translate-x-0' : 'translate-x-[50px]'}
+          `}
+        />
+
+        {/* LEFT SIDE: 
+          - Dark Mode Active: Shows MOON Icon (on blue).
+          - Light Mode Active: Shows "LIGHT MODE" stacked.
+        */}
+        <div className={`
+          relative z-10 flex-1 flex flex-col items-center justify-center leading-none
+          text-[8px] font-black tracking-tighter transition-colors duration-500
+          ${isDark ? 'text-primary-foreground' : 'text-muted-foreground'}
+        `}>
+          {isDark ? (
+            <Moon size={14} className="fill-current" />
+          ) : (
+            <>
+              <span>LIGHT</span>
+              <span>MODE</span>
+            </>
+          )}
+        </div>
+
+        {/* RIGHT SIDE: 
+          - Light Mode Active: Shows SUN Icon (on blue).
+          - Dark Mode Active: Shows "DARK MODE" stacked.
+        */}
+        <div className={`
+          relative z-10 flex-1 flex flex-col items-center justify-center leading-none
+          text-[8px] font-black tracking-tighter transition-colors duration-500
+          ${!isDark ? 'text-primary-foreground' : 'text-muted-foreground'}
+        `}>
+          {!isDark ? (
+            <Sun size={14} className="fill-current" />
+          ) : (
+            <>
+              <span>DARK</span>
+              <span>MODE</span>
+            </>
+          )}
+        </div>
+      </button>
+    </div>
   );
 };

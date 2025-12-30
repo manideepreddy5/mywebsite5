@@ -48,8 +48,7 @@ export const Navbar = () => {
           GMR
         </a>
 
-        {/* NAV ITEMS (Updated for Tablet/Desktop) */}
-        {/* Changed from absolute positioning to flex to prevent overlapping */}
+        {/* NAV ITEMS - Using lg:flex to avoid overlapping on tablets with the wider toggle */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8 mx-4">
           {navItems.map((item) => (
             <a
@@ -70,12 +69,14 @@ export const Navbar = () => {
         </div>
 
         {/* RIGHT SIDE ACTIONS */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-3 sm:gap-5">
           
+          {/* THE UPDATED THEME TOGGLE */}
           <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
             <ThemeToggle />
           </div>
 
+          {/* LINKEDIN DESKTOP */}
           <a
             href="https://www.linkedin.com/in/manideepreddygummadi/"
             target="_blank"
@@ -86,7 +87,7 @@ export const Navbar = () => {
               border border-[#0A66C2]/40
               text-sm font-medium text-[#0A66C2]
               hover:bg-[#0A66C2] hover:text-white
-              transition-all duration-300 shadow-sm
+              transition-all duration-300 shadow-sm shrink-0
             "
           >
             <Linkedin size={16} />
@@ -95,7 +96,7 @@ export const Navbar = () => {
 
           {/* MOBILE MENU TOGGLE */}
           <button
-            className="lg:hidden text-foreground p-2"
+            className="lg:hidden text-foreground p-2 shrink-0"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -104,7 +105,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE MENU (Visible on both Tablet and Mobile) */}
+      {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-background/95 backdrop-blur border-t border-border">
           <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-col gap-4">

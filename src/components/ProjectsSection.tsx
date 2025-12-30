@@ -17,67 +17,65 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-10 bg-background">
+    <section id="projects" className="py-12 bg-background">
       <div className="section-container">
         {/* Section Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-10 px-4">
           <h2 className="section-title">Projects</h2>
-          <p className="section-subtitle mt-2">
+          <p className="section-subtitle mt-2 text-sm sm:text-base max-w-2xl mx-auto text-muted-foreground">
             Notable work and academic contributions
           </p>
-          <div className="mx-auto mt-3 w-10 h-1 bg-primary rounded-full" />
+          <div className="mx-auto mt-4 w-12 h-1.5 bg-primary rounded-full shadow-sm shadow-primary/20" />
         </div>
 
         {/* Project Card */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           {projects.map((project, idx) => (
             <div
-              key={project.title}
-              className="bg-card rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${idx * 0.1}s` }}
+              key={idx}
+              className="bg-card border border-border/50 rounded-3xl p-6 sm:p-10 shadow-card hover:shadow-card-hover transition-all duration-500 group"
             >
-              {/* Title Row */}
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                   <project.icon className="w-6 h-6 text-primary" />
                 </div>
+                
                 <div className="flex-1">
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                  <span className="text-[10px] sm:text-xs font-bold text-primary uppercase tracking-wider">
                     Major Project
                   </span>
-                  <h3 className="text-2xl font-bold font-display text-foreground">
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-foreground mt-1 leading-tight">
                     {project.title}
                   </h3>
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-8 text-sm sm:text-base leading-relaxed">
                 {project.description}
               </p>
 
-              {/* Highlights */}
-              <ul className="space-y-2 mb-6">
+              {/* Highlights - Tightened spacing for mobile */}
+              <ul className="space-y-3 mb-8">
                 {project.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className="flex items-center gap-2 text-foreground"
+                    className="flex items-start gap-3 text-foreground text-sm sm:text-base"
                   >
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    {highlight}
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="leading-tight">{highlight}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
+              {/* Tags - Removed extra spacing around individual tags */}
+              <div className="flex flex-wrap gap-2 pt-6 border-t border-border/50">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                    className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-[11px] sm:text-xs font-semibold tracking-wide whitespace-nowrap"
                   >
                     {tag}
-                  </span>
+                  </span >
                 ))}
               </div>
             </div>
